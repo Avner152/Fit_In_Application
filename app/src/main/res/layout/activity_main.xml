@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/main_IMG_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/wallpaper1"
+        ></ImageView>
+
+
+    <GridLayout
+        android:id="@+id/gl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/main_BTN_Start"
+        android:alpha="0.75"
+
+        >
+        <Button
+            android:id="@+id/main_BTN_LogIn"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Log In"
+            android:textAllCaps="false"
+            android:textColor="#f9aa33"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/main_BTN_About"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="About Us"
+            android:textAllCaps="false"
+            android:textColor="#f9aa33"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/main_BTN_Contact"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Contact Us"
+            android:textAllCaps="false"
+            android:textColor="#f9aa33"
+            android:textSize="20dp" />
+
+
+    </GridLayout>
+    <Button
+        android:id="@+id/main_BTN_Start"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:alpha="0.75"
+        android:text="Let's get started"
+        android:textAllCaps="false"
+        android:textColor="#f9aa33"
+        android:textSize="20dp"
+        />
+</RelativeLayout>

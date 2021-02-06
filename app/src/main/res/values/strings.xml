@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Fit_In_Application</string>
+
+    <string name="booki">BookI</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="read_it_together">Read it together</string>
+    <string name="skip">Skip</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="forget_password">Forget Password.?</string>
+
+    <string-array name="Breakfast">
+        <item>Breakfast</item>
+        <item>Toast</item>
+        <item>Salad</item>
+        <item>Cereals</item>
+        <item>Shakshuka</item>
+        <item>Omlette</item>
+        <item>Pizza</item>
+        <item>Pancake</item>
+        <item>Yogurt</item>
+    </string-array>
+
+    <string-array name="Lunch">
+        <item>Lunch</item>
+        <item>Toast</item>
+        <item>Salad</item>
+        <item>Cereals</item>
+        <item>Shakshuka</item>
+        <item>Omlette</item>
+        <item>Pizza</item>
+        <item>Pancake</item>
+        <item>Yogurt</item>
+    </string-array>
+
+    <string-array name="Dinner">
+        <item>Dinner</item>
+        <item>Toast</item>
+        <item>Salad</item>
+        <item>Cereals</item>
+        <item>Shakshuka</item>
+        <item>Omlette</item>
+        <item>Pizza</item>
+        <item>Pancake</item>
+        <item>Yogurt</item>
+    </string-array>
+
+</resources>
