@@ -14,61 +14,44 @@
         android:scaleType="centerCrop"
         android:src="@drawable/wp_selection"></ImageView>
 
-    <Spinner
-        android:id="@+id/selec_SPN_breakfast"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginTop="20dp"
-        />
-
-    <Spinner
-        android:id="@+id/selec_SPN_lunch"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_toRightOf="@id/selec_SPN_breakfast"
-        android:layout_marginTop="20dp"
-
-        />
-
-    <Spinner
-        android:id="@+id/selec_SPN_dinner"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_toRightOf="@id/selec_SPN_lunch"
-        android:layout_marginTop="20dp"
-
-        />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/selec_RCV_col1"
+        android:id="@+id/selec_RCV_food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@color/black"
         android:padding="25dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="20dp"
-        ></androidx.recyclerview.widget.RecyclerView>
+        android:alpha="0.55"
+        />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/selec_RCV_col2"
+    <RadioGroup
+        android:id="@+id/sekec_RDG_meal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="25dp"
-        android:layout_toRightOf="@id/selec_RCV_col1"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="10dp"
-        ></androidx.recyclerview.widget.RecyclerView>
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+  >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/selec_RCV_col3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="25dp"
-        android:layout_toRightOf="@id/selec_RCV_col2"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="10dp"
-        ></androidx.recyclerview.widget.RecyclerView>
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Breakfast" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Lanch" />
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dinner" />
+    </RadioGroup>
+
 
 </RelativeLayout>
