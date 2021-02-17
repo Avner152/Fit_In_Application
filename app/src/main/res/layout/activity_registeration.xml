@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_registeration"
+    tools:context=".Activites.RegisterationActivity">
+
+    <TextView
+        android:id="@+id/regist_tv"
+        android:layout_width="316dp"
+        android:layout_height="69dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="Registeration"
+        android:textAllCaps="false"
+        android:textSize="80sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+
+        tools:layout_editor_absoluteY="92dp" />
+
+    <Button
+        android:id="@+id/back_Btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/cream_cake"
+        android:text="Back"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        app:layout_constraintTop_toBottomOf="@+id/register_Btn"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/logInBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:fontFamily="@font/cream_cake"
+        android:text="Log-in"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        app:layout_constraintTop_toBottomOf="@+id/register_Btn"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/usernameET"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/regist_tv"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regist_tv"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/emailET"
+        android:layout_width="314dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/usernameET"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameET"
+
+        tools:ignore="MissingConstraints"
+        tools:text="@string/email" />
+
+    <EditText
+        android:id="@+id/passwordET"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/emailET"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:inputType=""
+        android:textSize="28sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailET"
+        tools:ignore="MissingConstraints"
+        tools:text="@string/password" />
+
+    <Button
+        android:id="@+id/register_Btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/cream_cake"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordET" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

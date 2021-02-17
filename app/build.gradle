@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
-}
-
+    id 'com.google.gms.google-services'
+    }
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -37,11 +37,20 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'org.jetbrains:annotations:15.0'
     implementation 'org.jetbrains:annotations:15.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.2'
+    implementation 'com.google.firebase:firebase-database:19.6.0'
     testImplementation 'junit:junit:4.+'
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation "com.android.support:support-annotations:23.1.1"
 
+    implementation platform('com.google.firebase:firebase-bom:26.5.0')
+    implementation 'com.google.firebase:firebase-analytics'
+
+    //tab layout
+    implementation 'com.google.android.material:material:1.2.0-alpha03'
 
 }

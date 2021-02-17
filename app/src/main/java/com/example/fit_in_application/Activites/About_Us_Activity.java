@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,19 +26,28 @@ public class About_Us_Activity extends AppCompatActivity {
     private int curChar = 0;
     private MediaPlayer mp;
     private TextView tv;
-//    private ImageView inst_IMG_wp;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        cutOutDealer();
+
         setContentView(R.layout.activity_about__us_);
         initViews();
-        ViewBottons();
+        ViewButtons();
         startDelay();
     }
 
-    private void ViewBottons() {
+
+    private void cutOutDealer() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Log.d("About us", "cutOutDealer");
+    }
+    private void ViewButtons() {
         about_BTN_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,12 +69,16 @@ public class About_Us_Activity extends AppCompatActivity {
                 stopDelay();
             }
         });
+        Log.d("About us", "ViewButtons");
+
     }
 
     private void initViews() {
         tv = findViewById(R.id.about_TXT_us);
         about_BTN_back = findViewById(R.id.about_BTN_back);
         about_BTN_skip = findViewById(R.id.about_BTN_skip);
+        Log.d("About us", "initViews");
+
     }
 
     private void playSounds(int rawId) {
@@ -113,7 +128,7 @@ public class About_Us_Activity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        Log.d("instr.", "Been Started");
+        Log.d("About us", "onStart State");
         super.onStart();
         printMyStr(curChar);
         playSounds(R.raw.snd_kboard);
@@ -123,13 +138,28 @@ public class About_Us_Activity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d("About us", "onPause State");
         mp.stop();
         stopDelay();
     }
 
     @Override
     protected void onStop() {
+        Log.d("About us", "onStop State");
         super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d("About us", "onDestroy State");
+
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d("About us", "onResume State");
+        super.onResume();
     }
 
     @Override

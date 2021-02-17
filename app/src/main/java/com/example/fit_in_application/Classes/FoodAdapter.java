@@ -1,14 +1,15 @@
 package com.example.fit_in_application.Classes;
 
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fit_in_application.Activites.Selection_Activity;
 import com.example.fit_in_application.R;
 
 import java.util.List;
@@ -16,10 +17,11 @@ import java.util.List;
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
 
     private List<Food> foodList;
-    private int chosenMealPosition;
+    private int chosenMealPosition, selectedThreshold;
     private String chosenMealCat, chosenMealName;
     private double chosenMealCal;
-
+    private Selection_Activity selection_activity;
+    private OnItemClick onItemClick;
     public FoodAdapter(List<Food> list){
         foodList = list;
     }
@@ -27,27 +29,33 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     @NonNull
     @Override
     public FoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_item, parent, false);
-
-        return new FoodViewHolder(v);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_item2, parent, false);
+        return new FoodViewHolder(v, onItemClick);
     }
 
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
-        holder.tvName.setText(foodList.get(position).getName());
+        if(foodList.get(position).getCalories() ==  0){
+            holder.btn_item.setTypeface(Typeface.MONOSPACE, Typeface.BOLD);
+            holder.btn_item.setText("<< " + foodList.get(position).getCategorye() + " >>");
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "You Chose: " + foodList.get(position).getName(), Toast.LENGTH_SHORT).show();
-                chosenMealCal = foodList.get(position).getCalories();
-                chosenMealCat = foodList.get(position).getCategorye();
-                chosenMealName = foodList.get(position).getName();
+        }
+        else
+             holder.btn_item.setText(foodList.get(position).getName());
 
-                // send it to next calculation //
-            }
-        });
+    }
 
+    public void setOnItemClick(OnItemClick onItemClick) {
+        this.onItemClick = onItemClick;
+    }
+
+
+    public void setChosenMealCal(double chosenMealCal) {
+        this.chosenMealCal = chosenMealCal;
+    }
+
+    public double getChosenMealCal() {
+        return chosenMealCal;
     }
 
     @Override
@@ -56,13 +64,31 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     }
 
 
-    public static class FoodViewHolder extends RecyclerView.ViewHolder {
+    public class FoodViewHolder extends RecyclerView.ViewHolder {
+        private Button btn_item;
 
-        private TextView tvName;
-        public FoodViewHolder(@NonNull View itemView) {
+        public FoodViewHolder(@NonNull View itemView, OnItemClick onItemClick) {
             super(itemView);
-        tvName = itemView.findViewById(R.id.text_Item_Name);
+            btn_item = itemView.findViewById(R.id.btn_Item_Name);
+
+            chosenMealName = btn_item.getText().toString();
+
+            btn_item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClick.onItemClick(foodList.get(getAbsoluteAdapterPosition()));
+                }
+            });
 
         }
     }
+
+    public void setSelectedThreshold(int selectedThreshold) {
+        this.selectedThreshold = selectedThreshold;
+    }
+
+    public interface OnItemClick{
+        void onItemClick (Food food);
+    }
 }
+

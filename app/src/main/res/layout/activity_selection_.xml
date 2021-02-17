@@ -5,53 +5,180 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_registeration"
     tools:context=".Activites.Selection_Activity">
 
-    <ImageView
-        android:id="@+id/main_IMG_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/wp_selection"></ImageView>
+    <Button
+        android:id="@+id/selec_BTN_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/climousines"
+        android:text="Next >"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/selec_BTN_prev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/climousines"
+        android:text="Previous"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/selec_RCV_food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:background="@color/black"
-        android:padding="25dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/diy_switch"
+        android:layout_above="@id/meal_CV"
         android:alpha="0.55"
-        />
+        android:background="@color/white"
+        android:padding="15dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/selec_RCV_meal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/diy_switch"
+        android:layout_above="@id/meal_CV"
+        android:alpha="0.55"
+        android:background="@color/white"
+        android:padding="15dp"
+  />
 
     <RadioGroup
         android:id="@+id/sekec_RDG_meal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="25dp"
         android:layout_centerHorizontal="true"
   >
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/selec_rb_breakfast"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Breakfast" />
+            android:fontFamily="@font/cream_cake"
+            android:text="Breakfast"
+            android:textSize="28sp" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/selec_rb_lunch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Lanch" />
+            android:fontFamily="@font/cream_cake"
+            android:text="Lanch"
+            android:textSize="28sp" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/selec_rb_dinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dinner" />
+            android:fontFamily="@font/cream_cake"
+            android:scrollbarSize="2dp"
+            android:text="Dinner"
+            android:textSize="28sp" />
     </RadioGroup>
+
+    <Switch
+        android:id="@+id/diy_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sekec_RDG_meal"
+        android:layout_centerInParent="true"
+        android:textSize="30dp"
+        android:text="DIY?"         />
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/meal_CV"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp"
+        android:layout_above="@id/selec_BTN_prev"
+        android:background="@color/cardview_dark_background"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/meal"
+
+                />
+            <TextView
+                android:id="@+id/txtMeal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:text="Meal: "
+                android:textColor="@color/black"
+                android:fontFamily="@font/climousinesbold"
+                android:textSize="15sp"
+                />
+            <TextView
+                android:id="@+id/txtIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:text="Ingredients: "
+                android:textColor="@color/black"
+                android:fontFamily="@font/climousinesbold"
+                android:textSize="15sp"
+                />
+            <TextView
+                android:id="@+id/txtCalories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:text="Calories"
+                android:textColor="@color/black"
+                android:fontFamily="@font/climousinesbold"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/txtAddedDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="added Date: "
+                android:padding="1dp"
+                android:fontFamily="@font/climousinesbold"
+                android:textSize="15sp"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>

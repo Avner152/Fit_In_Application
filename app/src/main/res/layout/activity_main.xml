@@ -4,64 +4,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
 
     <ImageView
         android:id="@+id/main_IMG_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/wallpaper1"
-        ></ImageView>
+        android:src="@drawable/spwp"></ImageView>
 
-
-    <GridLayout
+    <LinearLayout
         android:id="@+id/gl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/main_BTN_Start"
-        android:alpha="0.75"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:alpha="0.55">
 
-        >
         <Button
             android:id="@+id/main_BTN_LogIn"
-            android:layout_width="wrap_content"
-            android:layout_height="65dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/climousines"
             android:text="Log In"
             android:textAllCaps="false"
-            android:textColor="#f9aa33"
-            android:textSize="20dp" />
+            android:textColor="#000000"
+            android:textSize="26sp" />
 
         <Button
             android:id="@+id/main_BTN_About"
-            android:layout_width="wrap_content"
-            android:layout_height="65dp"
-            android:text="About Us"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:fontFamily="@font/climousines"
+            android:text="About"
             android:textAllCaps="false"
-            android:textColor="#f9aa33"
-            android:textSize="20dp" />
+            android:textColor="#000000"
+            android:textSize="26dp" />
 
         <Button
             android:id="@+id/main_BTN_Contact"
-            android:layout_width="wrap_content"
-            android:layout_height="65dp"
-            android:text="Contact Us"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/climousines"
+            android:text="Contact"
             android:textAllCaps="false"
-            android:textColor="#f9aa33"
-            android:textSize="20dp" />
+            android:textColor="#000000"
+            android:textSize="26sp" />
 
 
-    </GridLayout>
-    <Button
-        android:id="@+id/main_BTN_Start"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_alignParentBottom="true"
-        android:alpha="0.75"
-        android:text="Let's get started"
-        android:textAllCaps="false"
-        android:textColor="#f9aa33"
-        android:textSize="20dp"
-        />
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
+        android:fontFamily="@font/cream_cake"
+        android:text="Fit~In"
+        android:textSize="165sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/gl"
+        android:layout_below="@+id/Logo"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-35dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="336dp"
+        android:text="application"
+        android:textSize="45sp" />
 </RelativeLayout>

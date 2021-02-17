@@ -1,10 +1,10 @@
 package com.example.fit_in_application.Classes;
 
 public class Food {
+
     private double calories;
     private String name;
     private String category;
-
 
     public Food()
     {
