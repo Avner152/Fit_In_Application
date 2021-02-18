@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,5 +9,81 @@
     tools:context=".Activites.Confirmation_Activity">
 
 
+        <LinearLayout
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginTop="50dp"
+            android:padding="8dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/meal"
+
+                />
+            <TextView
+                android:id="@+id/txtMeal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:text="Meal: "
+                android:textColor="@color/black"
+                android:fontFamily="@font/climousinesbold"
+                android:textSize="15sp"
+                />
+            <TextView
+                android:id="@+id/txtIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:text="Ingredients: "
+                android:textColor="@color/black"
+                android:fontFamily="@font/climousinesbold"
+                android:textSize="15sp"
+                />
+            <TextView
+                android:id="@+id/txtCalories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:text="Calories"
+                android:textColor="@color/black"
+                android:fontFamily="@font/climousinesbold"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/txtAddedDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="added Date: "
+                android:padding="1dp"
+                android:fontFamily="@font/climousinesbold"
+                android:textSize="15sp"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+    <TextView
+        android:id="@+id/decision_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/table"
+        android:layout_marginTop="25dp"
+        android:textSize="50dp"
+        android:text="This is your Decition:" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/choice_confirmation_RCV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/decision_text"
+
+        />
+</RelativeLayout>

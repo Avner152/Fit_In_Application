@@ -2,7 +2,6 @@ package com.example.fit_in_application.Activites;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,7 +33,7 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
     public static final int LUNCH_THRESHOLD = 1000;
     public static final int DINNER_THRESHOLD = 600;
 
-    private int capturedTresh;
+    private int capturedThresh;
     private String chosenMealName = "";
     private double currentCalories = 0;
     private TextView mealName_tv, date_tv, ingredients_tv, calories_tv;
@@ -45,7 +43,6 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
     private MealAdapter mealAdapter;
     private DatabaseManager dbm;
     private RadioButton rbBreakfast, rbLunch, rbDinner;
-    private CardView cardView;
     private Button nextBtn, prevBtn;
     private Switch diySwitch;
     private Meal chosenMeal;
@@ -59,7 +56,7 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
 
         findViews();
 
-        capturedTresh = 0;
+        capturedThresh = 0;
         selec_RCV_food.setVisibility(View.GONE);
         if(chosenFoodInList == null)
             chosenFoodInList = new ArrayList<>();
@@ -92,7 +89,7 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(capturedTresh == 0)
+                if(capturedThresh == 0)
                     Toast.makeText(Selection_Activity.this, "Please insert type of Meal...", Toast.LENGTH_SHORT).show();
                 else {
                     chosenMeal.setMealName(chosenMealName);
@@ -100,10 +97,10 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
                     chosenMeal.setIngredients(chosenFoodInList);
                     chosenMeal.setMealName(mealName_tv.getText().toString());
 
-
                     Intent intent = new Intent(Selection_Activity.this, Confirmation_Activity.class);
                     intent.putExtra("meal", (Serializable) chosenMeal);
                     intent.putExtra("dbm", (Serializable) dbm);
+                    intent.putExtra("thresh", capturedThresh);
                     startActivity(intent);
 
                 }
@@ -114,23 +111,21 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
     rbBreakfast.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            capturedTresh = BREAKFAST_THRESHOLD;
-            foodAdapter.setSelectedThreshold(capturedTresh);        }
+            capturedThresh = BREAKFAST_THRESHOLD;
+        }
     });
 
         rbLunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                capturedTresh = LUNCH_THRESHOLD;
-                foodAdapter.setSelectedThreshold(capturedTresh);
+                capturedThresh = LUNCH_THRESHOLD;
             }
         });
 
         rbDinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                capturedTresh = DINNER_THRESHOLD;
-                foodAdapter.setSelectedThreshold(capturedTresh);
+                capturedThresh = DINNER_THRESHOLD;
             }
         });
 
@@ -162,7 +157,6 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
 
         // CardView:
         mealAdapter.setOnItemClickListener(new MealAdapter.OnItemClickListener() {
-
 
             @Override
             public void onItemClickListener(int position) {
@@ -212,10 +206,11 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
         selec_RCV_food = findViewById(R.id.selec_RCV_food);
         linearLayoutManager = new LinearLayoutManager(this);
         foodAdapter = new FoodAdapter(dbm.getFoodDatabase());
+        foodAdapter.setTypeOfInflate(1);
+
         selec_RCV_food.setLayoutManager(linearLayoutManager);
         selec_RCV_food.setHasFixedSize(true);
         selec_RCV_food.setAdapter(foodAdapter);
-
 
         // Meals //
         selec_RCV_meal = findViewById(R.id.selec_RCV_meal);
@@ -235,7 +230,6 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
         String tmp;
         for (Food f: dbm.getFoodDatabase() ) {
             tmp = f.getCategorye();
-            Log.d("TEMP", ": " + tmp + ", " + f.getName());
         }
     }
 
@@ -248,7 +242,6 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
     rbLunch =  findViewById(R.id.selec_rb_lunch);
     rbDinner = findViewById(R.id.selec_rb_dinner);
     diySwitch = findViewById(R.id.diy_switch);
-    cardView = findViewById(R.id.meal_CV);
     mealName_tv = findViewById(R.id.txtMeal);
     date_tv = findViewById(R.id.txtAddedDate);
     ingredients_tv = findViewById(R.id.txtIngredients);

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/item_layout_image_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#C0C0C0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/item_layout_meal"
+        app:srcCompat="@drawable/meat"
+        android:layout_height="50dp"
+        android:layout_width="50dp"
+
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/item_layout_meal_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="4dp"
+        android:text="Meal Name: "
+        android:fontFamily="@font/climousinesbold"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@+id/item_layout_meal"
+        app:layout_constraintTop_toTopOf="@+id/item_layout_image_container" />
+
+    <TextView
+        android:id="@+id/item_layout_ingredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingredients: "
+        android:textSize="15dp"
+        android:fontFamily="@font/valentime"
+        app:layout_constraintStart_toStartOf="@+id/item_layout_meal_name"
+        app:layout_constraintTop_toBottomOf="@+id/item_layout_meal_name" />
+    <TextView
+        android:id="@+id/item_layout_Calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingredients: "
+        android:textSize="15dp"
+        android:fontFamily="@font/valentime"
+        app:layout_constraintStart_toStartOf="@+id/item_layout_meal_name"
+        app:layout_constraintTop_toBottomOf="@+id/item_layout_meal_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

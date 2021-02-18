@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#55FFFFFF"
+
+    >
+
+    <ImageView
+        android:id="@+id/image_meal"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/meat"
+        />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorTextView"
+        android:layout_margin="8dp"
+        />
+
+    <TextView
+        android:id="@+id/btn_Item_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/climousines"
+        android:textColor="@color/black"
+        android:text="what the fuuck ??"
+        android:layout_marginTop="15dp"
+        android:textAllCaps="false"
+        android:textSize="18sp" />
+
+</LinearLayout>

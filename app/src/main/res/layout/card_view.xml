@@ -17,23 +17,25 @@
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:orientation="vertical">
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/meal"
 
-        />
-    <TextView
-        android:id="@+id/txtMeal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="1dp"
-        android:text="Meal: "
-        android:textColor="@color/black"
-        android:fontFamily="@font/climousinesbold"
-        android:textSize="15sp"
- />
-    <TextView
+        <ImageView
+            android:id="@+id/pic_meal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/meal"
+            />
+
+        <TextView
+            android:id="@+id/txtMeal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/climousinesbold"
+            android:padding="1dp"
+            android:text="Meal: "
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
         android:id="@+id/txtIngredients"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

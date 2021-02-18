@@ -31,4 +31,8 @@ public class Food implements Serializable {
     public String getCategorye(){
         return this.category;
     }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }
