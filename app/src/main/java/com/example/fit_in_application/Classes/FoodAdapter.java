@@ -38,11 +38,9 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         if(foodList.get(position).getCalories() ==  0){
             holder.btn_item.setTypeface(Typeface.MONOSPACE, Typeface.BOLD);
             holder.btn_item.setText("<< " + foodList.get(position).getCategorye() + " >>");
-
         }
         else
              holder.btn_item.setText(foodList.get(position).getName());
-
     }
 
     public void setOnItemClick(OnItemClick onItemClick) {

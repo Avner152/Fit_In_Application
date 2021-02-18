@@ -3,7 +3,6 @@ package com.example.fit_in_application.Activites;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -42,14 +41,7 @@ public class RegisterationActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_registeration);
         findViews();
-        firebaseAuth  = FirebaseAuth.getInstance();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        if(firebaseUser != null){
-            Intent intent = new Intent(RegisterationActivity.this, Selection_Activity.class);
-            startActivity(intent);
-            finish();
-        }
         initViews();
 
     }
@@ -67,7 +59,6 @@ public class RegisterationActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        Log.d("TAG", "onComplete: im in");
                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
                         String userid = firebaseUser.getUid().toString();
@@ -83,7 +74,6 @@ public class RegisterationActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
-                                    Log.d("TAG", ": " + task.isSuccessful());
                                     Intent intent = new Intent(RegisterationActivity.this, MainActivity.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
@@ -116,13 +106,6 @@ public class RegisterationActivity extends AppCompatActivity {
             }
         });
 
-        logInBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegisterationActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,7 +120,6 @@ public class RegisterationActivity extends AppCompatActivity {
         emailET = findViewById(R.id.emailET);
         passwordET = findViewById(R.id.passwordET);
         registerBtn = findViewById(R.id.register_Btn);
-        logInBtn = findViewById(R.id.logInBtn);
         backBtn = findViewById(R.id.back_Btn);
     }
 }

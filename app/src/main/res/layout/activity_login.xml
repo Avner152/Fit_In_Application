@@ -25,9 +25,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="158dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="@string/email"
-        android:textSize="28dp" />
+        android:hint="@string/email"
+        android:textSize="28dp"
+        tools:ignore ="MissingConstraints"
+
+        />
 
     <EditText
         android:id="@+id/login_ET_password"
@@ -37,9 +39,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:ems="10"
-        android:inputType=""
-        android:text="@string/password"
-        android:textSize="28dp" />
+        android:hint="@string/password"
+        android:textSize="28dp"
+        tools:ignore ="MissingConstraints"
+        />
 
     <Button
         android:id="@+id/login_BTN_login"
@@ -48,9 +51,38 @@
         android:layout_below="@+id/login_ET_password"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="14dp"
         android:layout_marginRight="20dp"
-        android:text="@string/login"
+        android:alpha="0.55"
+        android:text="Log In"
+        android:textStyle="bold"
         android:textAllCaps="false"
-        android:textSize="30dp" />
+        android:textColor="@color/black"
+        android:textSize="32dp" />
+
+    <Button
+        android:id="@+id/login_BTN_reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/does_not_Have"
+        android:layout_alignEnd="@+id/login_BTN_login"
+        android:text="Sign in >"
+        android:textColor="@color/AvnerLight"
+        android:backgroundTint="@color/Avners"
+        android:textAllCaps="false"
+        android:textSize="25dp"
+        android:fontFamily="@font/lemon_juice"
+        android:alpha="0.55"
+        />
+
+    <TextView
+        android:id="@+id/does_not_Have"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_BTN_login"
+        android:layout_alignEnd="@+id/login_BTN_login"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/climousines"
+        android:text="don't have a user?" />
 </RelativeLayout>

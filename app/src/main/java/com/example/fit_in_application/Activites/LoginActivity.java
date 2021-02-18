@@ -3,6 +3,7 @@ package com.example.fit_in_application.Activites;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -25,11 +26,11 @@ import org.jetbrains.annotations.Nullable;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText emailET, passwordET;
-    private Button logInBtn;
+    private Button logInBtn, signInBtn;
 
     // Firebase:
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,12 +43,32 @@ public class LoginActivity extends AppCompatActivity {
         // FirebaseAuth:
         firebaseAuth = FirebaseAuth.getInstance();
 
-
-
         initButton();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("AG", "onStart: ");
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(firebaseUser != null){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
     private void initButton() {
+
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RegisterationActivity.class));
+                finish();
+            }
+        });
+
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
-                                        Intent intent = new Intent(LoginActivity.this, Selection_Activity.class);
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
                                         finish();
@@ -88,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
         emailET = findViewById(R.id.login_ET_email);
         passwordET = findViewById(R.id.login_ET_password);
         logInBtn = findViewById(R.id.login_BTN_login);
-
+        signInBtn = findViewById(R.id.login_BTN_reg);
     }
 
 }

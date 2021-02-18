@@ -19,7 +19,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="75dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:alpha="0.55">
 
         <Button
@@ -31,7 +33,7 @@
             android:text="Log In"
             android:textAllCaps="false"
             android:textColor="#000000"
-            android:textSize="26sp" />
+            android:textSize="23dp" />
 
         <Button
             android:id="@+id/main_BTN_About"
@@ -44,7 +46,9 @@
             android:text="About"
             android:textAllCaps="false"
             android:textColor="#000000"
-            android:textSize="26dp" />
+            android:textSize="23dp"
+
+            />
 
         <Button
             android:id="@+id/main_BTN_Contact"
@@ -55,12 +59,28 @@
             android:text="Contact"
             android:textAllCaps="false"
             android:textColor="#000000"
-            android:textSize="26sp" />
+            android:textSize="23dp" />
 
 
     </LinearLayout>
 
 
+    <Button
+        android:id="@+id/main_BTN_Start"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:alpha="0.55"
+        android:fontFamily="@font/climousinesbold"
+        android:text="Start"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:backgroundTint="#57aca5"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/Logo"

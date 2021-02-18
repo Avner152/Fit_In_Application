@@ -1,20 +1,21 @@
 package com.example.fit_in_application.Classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Meal extends Food{
+public class Meal  implements Serializable {
 
     // Indigents
-    private List<String> ingredients;
+    private List<String> ingredients ;
     private String mealName;
     private double calories;
 
-    private Meal()
+    public Meal()
     {
         ingredients = new ArrayList<>();
-        mealName = "Untitled";
-
+        mealName = "No Meal Chosen";
+        calories = 0;
     }
     public Meal(String mealName, List<String> ingredients, double calories){
         this.ingredients = ingredients;
@@ -28,6 +29,18 @@ public class Meal extends Food{
 
     public List<String> getIngredients() {
         return ingredients;
+    }
+
+    public void setCalories(double calories) {
+        this.calories = calories;
+    }
+
+    public void setMealName(String mealName) {
+        this.mealName = mealName;
+    }
+
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public double getCalories() {

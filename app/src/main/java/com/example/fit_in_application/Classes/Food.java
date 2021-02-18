@@ -1,6 +1,8 @@
 package com.example.fit_in_application.Classes;
 
-public class Food {
+import java.io.Serializable;
+
+public class Food implements Serializable {
 
     private double calories;
     private String name;

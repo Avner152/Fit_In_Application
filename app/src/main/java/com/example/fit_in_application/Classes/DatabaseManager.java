@@ -1,10 +1,11 @@
 package com.example.fit_in_application.Classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DatabaseManager {
+public class DatabaseManager implements Serializable {
 
     private List<String> foodCategoryList = new ArrayList<>();
     private List<Food> foodDatabase = new ArrayList<>();
@@ -21,7 +22,7 @@ public class DatabaseManager {
         mealDatabase.add(new Meal("Beef Shawarma", Arrays.asList("Beef", "Pita Bread", "Tahini", "Sliced Salad"), 1078.24));
         mealDatabase.add(new Meal("Eggnog Pancakes", Arrays.asList("Eggnog", "Butter", "Cinnamon", "Syrup"), 357.72));
         mealDatabase.add(new Meal("Baked Ravioli", Arrays.asList("Ricotta Cheese", "Ravioli", "Parmesan Cheese", "Mozzarella Cheese"), 412.24));
-        mealDatabase.add(new Meal("KFC", Arrays.asList("Chicken", "Ketchup"), 867.92));
+        mealDatabase.add(new Meal("KFC", Arrays.asList("Chicken Wings", "Ketchup"), 867.92));
 
     }
 
@@ -33,6 +34,10 @@ public class DatabaseManager {
         foodDatabase.add(new Food("Dairy", "Sweet Omlette ", 17.79f));
         foodDatabase.add(new Food("Dairy", "Scrambled Egg", 6.5f));
         foodDatabase.add(new Food("Dairy", "Egg", 78f));
+        foodDatabase.add(new Food("Dairy", "Mozzarella Cheese", 28f));
+        foodDatabase.add(new Food("Dairy", "Parmesan Cheese", 43f));
+        foodDatabase.add(new Food("Dairy", "Ricotta Cheese", 17.21f));
+
 
         // Vegetables
         foodDatabase.add(new Food("Vegetables"," ",0));
@@ -64,22 +69,42 @@ public class DatabaseManager {
 
         // Bread
         foodDatabase.add(new Food("Bread"," ",0));
-        foodDatabase.add(new Food("Bread","Baked Potato ",93f));
-        foodDatabase.add(new Food("Bread","Baked Corn",108f));
         foodDatabase.add(new Food("Bread","Big White Bread",80f));
         foodDatabase.add(new Food("Bread","Big Brown Bread",69f));
         foodDatabase.add(new Food("Bread","Cream Cracker" ,35f));
         foodDatabase.add(new Food("Bread","Small White Bread ",66f));
-        foodDatabase.add(new Food("Bread","Bread, toasted",270f));
+        foodDatabase.add(new Food("Bread","Bread, toasted",55f));
+        foodDatabase.add(new Food("Bread","Regular Bun Small",73f));
+        foodDatabase.add(new Food("Bread","Regular Bun Medium",92f));
+        foodDatabase.add(new Food("Bread","Regular Bun Large",168f));
+        foodDatabase.add(new Food("Bread","Whole Bun Large",151f));
+        foodDatabase.add(new Food("Bread","Pita Bread",155f));
+        foodDatabase.add(new Food("Bread","Pita whole wheat",144f));
 
         // Cereals
         foodDatabase.add(new Food("Cereals","",0));
-        foodDatabase.add(new Food("Cereals","Bulgur, cooked",83f));
+        foodDatabase.add(new Food("Cereals","Bulgur",83f));
         foodDatabase.add(new Food("Cereals","Corn flour",363f));
         foodDatabase.add(new Food("Cereals","Macaroni",128f));
         foodDatabase.add(new Food("Cereals","Pasta",126f));
         foodDatabase.add(new Food("Cereals","Rice",130f));
         foodDatabase.add(new Food("Cereals","Wild rice",101f));
+        foodDatabase.add(new Food("Cereals","Baked Potato ",93f));
+        foodDatabase.add(new Food("Cereals","Baked Corn",108f));
+        foodDatabase.add(new Food("Cereals","Ravioli",77.4f));
+
+        //Meat
+        foodDatabase.add(new Food("Meat","",0));
+        foodDatabase.add(new Food("Meat","Stake Entrecote",291f));
+        foodDatabase.add(new Food("Meat","Stake Sinta",243f));
+        foodDatabase.add(new Food("Meat","Chicken Leg",171f));
+        foodDatabase.add(new Food("Meat","Indian shawarma",173f));
+        foodDatabase.add(new Food("Meat","Veal shawarma",201f));
+        foodDatabase.add(new Food("Meat","Chicken Breast",165f));
+        foodDatabase.add(new Food("Meat","Chicken Wings",202f));
+        foodDatabase.add(new Food("Meat","Beef Patty 100g",295f));
+        foodDatabase.add(new Food("Meat","Beef Patty 200g",590f));
+
     }
 
     private void createFoodList(){

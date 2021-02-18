@@ -25,14 +25,19 @@ import com.example.fit_in_application.Classes.Meal;
 import com.example.fit_in_application.Classes.MealAdapter;
 import com.example.fit_in_application.R;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class Selection_Activity extends AppCompatActivity {
+public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
     public static final int BREAKFAST_THRESHOLD = 500;
     public static final int LUNCH_THRESHOLD = 1000;
     public static final int DINNER_THRESHOLD = 600;
 
-    private int capturedTresh, currentCalories = 0;
+    private int capturedTresh;
+    private String chosenMealName = "";
+    private double currentCalories = 0;
     private TextView mealName_tv, date_tv, ingredients_tv, calories_tv;
     private RecyclerView selec_RCV_meal, selec_RCV_food;
     private LinearLayoutManager linearLayoutManager;
@@ -43,6 +48,8 @@ public class Selection_Activity extends AppCompatActivity {
     private CardView cardView;
     private Button nextBtn, prevBtn;
     private Switch diySwitch;
+    private Meal chosenMeal;
+    private List<String> chosenFoodInList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +58,15 @@ public class Selection_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_selection_);
 
         findViews();
+
         capturedTresh = 0;
         selec_RCV_food.setVisibility(View.GONE);
+        if(chosenFoodInList == null)
+            chosenFoodInList = new ArrayList<>();
+
+        if(chosenMeal == null)
+            chosenMeal = new Meal();
+
 
         createLists();
         setupRecyclerView();
@@ -67,7 +81,6 @@ public class Selection_Activity extends AppCompatActivity {
     }
 
     private void initViews() {
-
         // Buttons:
         prevBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,8 +94,19 @@ public class Selection_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if(capturedTresh == 0)
                     Toast.makeText(Selection_Activity.this, "Please insert type of Meal...", Toast.LENGTH_SHORT).show();
-                else
-                    startActivity(new Intent (Selection_Activity.this, HistoryTableActivity.class));
+                else {
+                    chosenMeal.setMealName(chosenMealName);
+                    chosenMeal.setCalories(currentCalories);
+                    chosenMeal.setIngredients(chosenFoodInList);
+                    chosenMeal.setMealName(mealName_tv.getText().toString());
+
+
+                    Intent intent = new Intent(Selection_Activity.this, Confirmation_Activity.class);
+                    intent.putExtra("meal", (Serializable) chosenMeal);
+                    intent.putExtra("dbm", (Serializable) dbm);
+                    startActivity(intent);
+
+                }
             }
         });
 
@@ -115,6 +139,9 @@ public class Selection_Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 currentCalories = 0;
+                if(chosenFoodInList != null)
+                    chosenFoodInList.clear();
+
                 initText();
                 if(isChecked) {
                     selec_RCV_food.setVisibility(View.VISIBLE);
@@ -135,6 +162,8 @@ public class Selection_Activity extends AppCompatActivity {
 
         // CardView:
         mealAdapter.setOnItemClickListener(new MealAdapter.OnItemClickListener() {
+
+
             @Override
             public void onItemClickListener(int position) {
                 //
@@ -143,14 +172,18 @@ public class Selection_Activity extends AppCompatActivity {
             // meal on cardView:
             @Override
             public void onItemClickListener(Meal meal) {
-                mealName_tv.setText(meal.getMealName());
+                chosenMealName = meal.getMealName();
+                mealName_tv.setText(chosenMealName);
                 date_tv.setText(new Date().toString());
                 String ingred = "";
                 for (int i = 0; i < meal.getIngredients().size(); i++) {
                     ingred += meal.getIngredients().get(i) + " | ";
+                    chosenFoodInList.add(meal.getIngredients().get(i));
                 }
+
                ingredients_tv.setText("Ingredients: " + ingred);
-               calories_tv.setText("Calories: "  + meal.getCalories());
+               currentCalories = meal.getCalories();
+               calories_tv.setText("Calories: "  + currentCalories);
             }
         });
 
@@ -158,12 +191,16 @@ public class Selection_Activity extends AppCompatActivity {
         foodAdapter.setOnItemClick(new FoodAdapter.OnItemClick() {
             @Override
             public void onItemClick(Food food) {
-                mealName_tv.setText("Do it Yourself");
+                chosenMealName = "Do it Yourself";
+                mealName_tv.setText(chosenMealName);
                 date_tv.setText(new Date().toString());
                 if(food.getCalories() != 0)
                     ingredients_tv.setText(ingredients_tv.getText() + food.getName() + " | ");
                 currentCalories += food.getCalories();
-                calories_tv.setText("Calories: "  + currentCalories);
+                calories_tv.setText("Calories: " + currentCalories);
+
+                //Chosen Meal:
+                chosenFoodInList.add(food.getName());
             }
         });
 
@@ -227,6 +264,5 @@ public class Selection_Activity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
     }
-
 
 }

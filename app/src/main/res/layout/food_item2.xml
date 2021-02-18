@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/climousinesbold"
         android:textColor="@color/black"
-        android:textSize="15sp" />
+        android:textAllCaps="false"
+        android:textSize="18sp" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
