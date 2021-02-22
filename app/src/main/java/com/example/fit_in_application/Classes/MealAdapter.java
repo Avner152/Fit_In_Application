@@ -15,28 +15,44 @@ import java.util.List;
 
 public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder> {
 
+    public static final int INFLATE_FOR_SELECTION = 0;
+    public static final int INFLATE_FOR_HISTORY = 1;
+
     private OnItemClickListener onItemClickListener;
     private List<Meal> mealList;
     private FoodAdapter.OnItemClick onItemClick;
-
+    private int typeOfInflate;
 
 
     public MealAdapter(List<Meal> mealList) {
         this.mealList = mealList;
     }
 
-
     @NonNull
     @Override
-    public MealAdapter.MealViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_item, parent, false);
-
-        return new MealAdapter.MealViewHolder(v, onItemClickListener);
+    public MealViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v;
+        if(typeOfInflate == 0)
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_item, parent, false);
+        else
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_item2, parent, false);
+        return new MealViewHolder(v, onItemClickListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MealAdapter.MealViewHolder holder, int position) {
-        holder.mealBtn.setText(mealList.get(position).getMealName());
+    public void onBindViewHolder(@NonNull MealViewHolder holder, int position) {
+        if(typeOfInflate == 0)
+            holder.mealBtn.setText(mealList.get(position).getMealName());
+        else
+        {
+            holder.tvMeal.setText(mealList.get(position).getMealName());
+            String str = "";
+            for (Food food: mealList.get(position).getFoodIngredients()) {
+                str += (food.getName() + " | " );
+            }
+            holder.tvIndeg.setText(str);
+            holder.tvCalorie.setText(holder.tvCalorie.getText() + (mealList.get(position).getCalories() + ""));
+        }
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
@@ -49,31 +65,37 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
     }
 
     public class MealViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView tvMeal, tvDate, tvIndeg;
+        private TextView tvMeal, tvCalorie, tvIndeg;
         private Button mealBtn;
 
         public MealViewHolder(@NonNull View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
-            mealBtn = itemView.findViewById(R.id.btn_Item_Name);
-
-            mealBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onItemClickListener.onItemClickListener(mealList.get(getAbsoluteAdapterPosition()));
-                }
-            });
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onItemClickListener != null) {
-                        int pos = getBindingAdapterPosition();
-                        onItemClickListener.onItemClickListener(pos);
+            if (typeOfInflate == 0) {
+                mealBtn = itemView.findViewById(R.id.btn_Item_Name);
+                mealBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onItemClickListener.onItemClickListener(mealList.get(getAbsoluteAdapterPosition()));
                     }
-                }
-            });
+                });
+
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onItemClickListener != null) {
+                            int pos = getBindingAdapterPosition();
+                            onItemClickListener.onItemClickListener(pos);
+                        }
+                    }
+                });
+            }
+            else{
+                tvMeal = itemView.findViewById(R.id.meal_name_history);
+                tvIndeg = itemView.findViewById(R.id.meal_Ingredients_history);
+                tvCalorie = itemView.findViewById(R.id.meal_Calorie_history);
+            }
         }
+
     }
 
     public interface OnItemClickListener {
@@ -81,4 +103,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
         void onItemClickListener(Meal meal);
     }
 
+    public void setTypeOfInflate(int typeOfInflate) {
+        this.typeOfInflate = typeOfInflate;
+    }
 }

@@ -1,32 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activites.HistoryTableActivity"
+    android:background="@drawable/gradient_registeration"
     android:orientation="vertical"
     >
 
-
-    <FrameLayout
-        android:id="@+id/score_LAY_list"
-        android:layout_width="match_parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/history_RCV_meal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="50"
-        android:layout_margin="20dp"
-        android:background="#D88B1A">
-
-    </FrameLayout>
+        android:layout_above="@id/score_LAY_map"
+        android:layout_below="@id/tv_history_title"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:padding="15dp" />
+    <TextView
+        android:id="@+id/tv_history_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="History Table"
+        android:textSize="80dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/Avners"
+        />
 
     <FrameLayout
         android:id="@+id/score_LAY_map"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_weight="1"
         android:layout_margin="20dp"
+        android:layout_alignParentBottom="true"
         android:background="@color/black"
         />
 
-</LinearLayout>
+</RelativeLayout>

@@ -10,53 +10,55 @@
 
 
         <LinearLayout
-            android:id="@+id/table"
+            android:id="@+id/confirmation_foodList_cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:padding="8dp"
-            android:orientation="vertical">
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical"
+            >
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/confirm_meal_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:src="@drawable/meal"
 
                 />
             <TextView
-                android:id="@+id/txtMeal"
+                android:id="@+id/confirm_txtMeal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="1dp"
                 android:text="Meal: "
                 android:textColor="@color/black"
                 android:fontFamily="@font/climousinesbold"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 />
             <TextView
-                android:id="@+id/txtIngredients"
+                android:id="@+id/confirm_txtIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="1dp"
                 android:text="Ingredients: "
                 android:textColor="@color/black"
                 android:fontFamily="@font/climousinesbold"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 />
             <TextView
-                android:id="@+id/txtCalories"
+                android:id="@+id/confirm_txtCalories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="1dp"
-                android:text="Calories"
+                android:text="Calories: "
                 android:textColor="@color/black"
                 android:fontFamily="@font/climousinesbold"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 />
 
             <TextView
-                android:id="@+id/txtAddedDate"
+                android:id="@+id/confirm_txtAddedDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="added Date: "
@@ -71,19 +73,61 @@
         android:id="@+id/decision_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/table"
-        android:layout_marginTop="25dp"
-        android:textSize="50dp"
-        android:text="This is your Decition:" />
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/confirmation_foodList_cardView"
+        android:layout_marginTop="5dp"
+        android:textSize="30dp"
+        android:text="Alternative Ingredient:" />
+
+    <TextView
+        android:id="@+id/chosenIngredients_tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft ="true"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/confirmation_foodList_cardView"
+        android:layout_marginTop="5dp"
+        android:textSize="30dp"
+        android:text="Change Your Meal:" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/choice_confirmation_RCV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_above="@id/confirm_BTN_next"
+        android:layout_below="@id/decision_text"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/change_confirmation_RCV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_above="@id/confirm_BTN_next"
         android:layout_below="@id/decision_text"
 
+        />
+
+    <Button
+        android:id="@+id/confirm_BTN_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm Meal >"
+        android:textAllCaps="false"
+        android:fontFamily="@font/climousinesbold"
+        android:textSize="35dp"
+        android:textColor="#FFF1AD"
+        android:backgroundTint="@color/Avners"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
         />
 </RelativeLayout>

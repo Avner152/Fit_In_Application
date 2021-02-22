@@ -7,21 +7,92 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    >
 
-    <Button
-        android:id="@+id/btn_Item_Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/climousines"
-        android:textColor="@color/black"
-        android:textAllCaps="false"
-        android:textSize="20dp" />
+    android:background="@color/AvnerLight"
+
+    >
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorTextView"
-        android:layout_margin="4dp"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         />
+    <TextView
+        android:id="@+id/meal_name_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="#d7be69"
+        android:shadowColor="@color/black"
+        android:shadowRadius="0.1"
+        android:shadowDy="2"
+        android:shadowDx="2"
+        android:text="Name: "
+        android:textAllCaps="false"
+        android:textSize="25dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TextView
+        android:id="@+id/meal_Ingredients_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:layout_gravity="center"
+        android:text="Ingredients: "
+
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+    />
+
+    <TextView
+        android:id="@+id/meal_Calorie_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto"
+        android:text="Total Calories: "
+        android:textAllCaps="false"
+
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <ImageView
+        android:id="@+id/image_meal_2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:src="@drawable/decor" />
+
 </LinearLayout>

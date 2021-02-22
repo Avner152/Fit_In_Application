@@ -27,12 +27,28 @@ public class Food implements Serializable {
     public String getName(){
         return this.name;
     }
-
-    public String getCategorye(){
-        return this.category;
+    public String getCategory() {
+        return category;
     }
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public void setCalories(double calories) {
+        this.calories = calories;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return  " Name: " + name +
+                " | Calories" + calories +
+                " | Category: " + category + "\n";
     }
 }

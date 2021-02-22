@@ -19,7 +19,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Fragment_map extends Fragment{
     private View v;
-    double dx, dy;
+    double dx = 31.771959, dy = 35.217018;
     private LatLng  latLng;
 
     @Nullable

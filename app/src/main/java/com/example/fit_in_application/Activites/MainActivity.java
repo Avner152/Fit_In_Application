@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         findViews();
         initViews();
 
+
         // firebase:
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         //databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         if (firebaseUser != null) {
             main_BTN_Start.setVisibility(View.VISIBLE);
             main_BTN_LogIn.setText("Log Out");
+
         }
         else {
             main_BTN_Start.setVisibility(View.GONE);

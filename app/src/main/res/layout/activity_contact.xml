@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#31CFCF"
+    android:background="@drawable/gradient_registeration"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -14,14 +14,14 @@
         android:layout_marginBottom="16dp"
         android:layout_marginTop="5dp"
         android:text="Contact Us"
-        android:textColor="#E1673AB7"
-        android:textSize="40sp"
+        android:textColor="@color/Avners"
+        android:textSize="60sp"
         android:typeface="serif" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#E1673AB7"
+        android:backgroundTint="@color/Avners"
         android:hint="Name"
         android:inputType="textPersonName" />
 
@@ -30,14 +30,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:backgroundTint="#E1673AB7"
+        android:backgroundTint="@color/Avners"
         android:hint="Email"
         android:inputType="textEmailAddress" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#E1673AB7"
+        android:backgroundTint="@color/Avners"
         android:hint="Phone"
         android:inputType="phone" />
 
@@ -46,7 +46,7 @@
         android:layout_height="150dp"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:backgroundTint="#E1673AB7"
+        android:backgroundTint="@color/Avners"
         android:gravity="top"
         android:hint="Your Message"
         android:fitsSystemWindows="true"
@@ -56,13 +56,25 @@
         android:padding="5dp" />
 
     <Button
+        android:id="@+id/submit_contact_Btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="#E1673AB7"
+        android:backgroundTint="@color/Avners"
         android:elevation="4dp"
-        android:paddingLeft="70dp"
+        android:fontFamily="@font/roboto"
+        android:paddingLeft="50dp"
         android:paddingRight="70dp"
         android:text="Submit"
-        android:textColor="#fff" />
+        android:textAllCaps="false"
+        android:textSize="45dp"
+        android:textColor="@color/AvnerLight" />
+
+    <ImageView
+        android:id="@+id/thank_you"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ty"
+        android:visibility="gone"
+        />
 </LinearLayout>

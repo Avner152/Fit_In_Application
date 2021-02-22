@@ -47,8 +47,14 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation "com.android.support:support-annotations:23.1.1"
 
+    //firebase
     implementation platform('com.google.firebase:firebase-bom:26.5.0')
     implementation 'com.google.firebase:firebase-analytics'
+
+    //fireCloud:
+    implementation platform('com.google.firebase:firebase-bom:26.5.0')
+    implementation 'com.google.firebase:firebase-firestore'
+
 
     //tab layout
     implementation 'com.google.android.material:material:1.2.0-alpha03'

@@ -16,10 +16,10 @@ public class DatabaseManager implements Serializable {
 
     public void addMeal(){
 
-        mealDatabase.add(new Meal("Hamburger", Arrays.asList("Regular Bun", "Beef Patty", "Pickles", "Onions"), 721.9));
-        mealDatabase.add(new Meal("Pizza", Arrays.asList("Tomato sauce", "Mozzarella Cheese", "Mushrooms", "black olives"), 561.4));
+        mealDatabase.add(new Meal("Hamburger", Arrays.asList("Regular Bun Medium", "Beef Patty", "Pickles", "Onion"), 721.9));
+        mealDatabase.add(new Meal("Pizza", Arrays.asList("Dough XL", "Tomato sauce", "Mozzarella Cheese", "Mushrooms", "black olives"), 561.4));
         mealDatabase.add(new Meal("Caesar salad", Arrays.asList("Cucumber", "Parmesan Cheese", "Eggs", "Croutons"), 481));
-        mealDatabase.add(new Meal("Beef Shawarma", Arrays.asList("Beef", "Pita Bread", "Tahini", "Sliced Salad"), 1078.24));
+        mealDatabase.add(new Meal("Beef Shawarma", Arrays.asList("Beef Patty Extra", "Pita Bread", "Tahini", "Tomato", "Cucumber", "Onion"), 1078.24));
         mealDatabase.add(new Meal("Eggnog Pancakes", Arrays.asList("Eggnog", "Butter", "Cinnamon", "Syrup"), 357.72));
         mealDatabase.add(new Meal("Baked Ravioli", Arrays.asList("Ricotta Cheese", "Ravioli", "Parmesan Cheese", "Mozzarella Cheese"), 412.24));
         mealDatabase.add(new Meal("KFC", Arrays.asList("Chicken Wings", "Ketchup"), 867.92));
@@ -37,10 +37,17 @@ public class DatabaseManager implements Serializable {
         foodDatabase.add(new Food("Dairy", "Mozzarella Cheese", 28f));
         foodDatabase.add(new Food("Dairy", "Parmesan Cheese", 43f));
         foodDatabase.add(new Food("Dairy", "Ricotta Cheese", 17.21f));
+        foodDatabase.add(new Food("Dairy","Tahini",44f));
+        foodDatabase.add(new Food("Dairy","Cinnamon",11f));
+        foodDatabase.add(new Food("Dairy","Syrup",43f));
+        foodDatabase.add(new Food("Dairy","Ketchup",32f));
+        foodDatabase.add(new Food("Dairy","Tomato sauce",31f));
+        foodDatabase.add(new Food("Dairy","Eggnog",68f));
 
 
         // Vegetables
         foodDatabase.add(new Food("Vegetables"," ",0));
+        foodDatabase.add(new Food("Vegetables","Black olives",29f));
         foodDatabase.add(new Food("Vegetables","Lime Split ",86f));
         foodDatabase.add(new Food("Vegetables","Sweet Potato ",86f));
         foodDatabase.add(new Food("Vegetables","Mix Vegetables",49f));
@@ -60,6 +67,7 @@ public class DatabaseManager implements Serializable {
         foodDatabase.add(new Food("Vegetables","Iceberg Lattice",14f));
         foodDatabase.add(new Food("Vegetables","Mushrooms",22f));
         foodDatabase.add(new Food("Vegetables","Onion",40f));
+        foodDatabase.add(new Food("Vegetables","Pickles",12f));
         foodDatabase.add(new Food("Vegetables","Potato",77f));
         foodDatabase.add(new Food("Vegetables","Sweet Corn",86f));
         foodDatabase.add(new Food("Vegetables","Sweet Potato",86f));
@@ -80,6 +88,7 @@ public class DatabaseManager implements Serializable {
         foodDatabase.add(new Food("Bread","Whole Bun Large",151f));
         foodDatabase.add(new Food("Bread","Pita Bread",155f));
         foodDatabase.add(new Food("Bread","Pita whole wheat",144f));
+        foodDatabase.add(new Food("Bread","Dough XL",451f));
 
         // Cereals
         foodDatabase.add(new Food("Cereals","",0));
@@ -92,6 +101,8 @@ public class DatabaseManager implements Serializable {
         foodDatabase.add(new Food("Cereals","Baked Potato ",93f));
         foodDatabase.add(new Food("Cereals","Baked Corn",108f));
         foodDatabase.add(new Food("Cereals","Ravioli",77.4f));
+        foodDatabase.add(new Food("Cereals","Croutons",22f));
+
 
         //Meat
         foodDatabase.add(new Food("Meat","",0));
@@ -102,8 +113,8 @@ public class DatabaseManager implements Serializable {
         foodDatabase.add(new Food("Meat","Veal shawarma",201f));
         foodDatabase.add(new Food("Meat","Chicken Breast",165f));
         foodDatabase.add(new Food("Meat","Chicken Wings",202f));
-        foodDatabase.add(new Food("Meat","Beef Patty 100g",295f));
-        foodDatabase.add(new Food("Meat","Beef Patty 200g",590f));
+        foodDatabase.add(new Food("Meat","Beef Patty",395f));
+        foodDatabase.add(new Food("Meat","Beef Patty Extra",611.4f));
 
     }
 

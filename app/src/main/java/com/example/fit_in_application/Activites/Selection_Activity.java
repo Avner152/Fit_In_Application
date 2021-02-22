@@ -2,6 +2,7 @@ package com.example.fit_in_application.Activites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -29,9 +30,9 @@ import java.util.Date;
 import java.util.List;
 
 public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
-    public static final int BREAKFAST_THRESHOLD = 500;
-    public static final int LUNCH_THRESHOLD = 1000;
-    public static final int DINNER_THRESHOLD = 600;
+    public static final int BREAKFAST_THRESHOLD = 300;
+    public static final int LUNCH_THRESHOLD = 600;
+    public static final int DINNER_THRESHOLD = 400;
 
     private int capturedThresh;
     private String chosenMealName = "";
@@ -93,6 +94,7 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
                     Toast.makeText(Selection_Activity.this, "Please insert type of Meal...", Toast.LENGTH_SHORT).show();
                 else {
                     chosenMeal.setMealName(chosenMealName);
+                    Log.d("TAGs", "onClick: Substructed Calories: " + currentCalories);
                     chosenMeal.setCalories(currentCalories);
                     chosenMeal.setIngredients(chosenFoodInList);
                     chosenMeal.setMealName(mealName_tv.getText().toString());
@@ -166,12 +168,14 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
             // meal on cardView:
             @Override
             public void onItemClickListener(Meal meal) {
+                if(chosenFoodInList.size() > 0)
+                    chosenFoodInList.clear();
                 chosenMealName = meal.getMealName();
                 mealName_tv.setText(chosenMealName);
                 date_tv.setText(new Date().toString());
                 String ingred = "";
                 for (int i = 0; i < meal.getIngredients().size(); i++) {
-                    ingred += meal.getIngredients().get(i) + " | ";
+                    ingred += (meal.getIngredients().get(i) + " | ");
                     chosenFoodInList.add(meal.getIngredients().get(i));
                 }
 
@@ -188,7 +192,7 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
                 chosenMealName = "Do it Yourself";
                 mealName_tv.setText(chosenMealName);
                 date_tv.setText(new Date().toString());
-                if(food.getCalories() != 0)
+                if(food.getCalories() > 0)
                     ingredients_tv.setText(ingredients_tv.getText() + food.getName() + " | ");
                 currentCalories += food.getCalories();
                 calories_tv.setText("Calories: " + currentCalories);
@@ -206,7 +210,7 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
         selec_RCV_food = findViewById(R.id.selec_RCV_food);
         linearLayoutManager = new LinearLayoutManager(this);
         foodAdapter = new FoodAdapter(dbm.getFoodDatabase());
-        foodAdapter.setTypeOfInflate(1);
+        foodAdapter.setTypeOfInflate(0);
 
         selec_RCV_food.setLayoutManager(linearLayoutManager);
         selec_RCV_food.setHasFixedSize(true);
@@ -229,7 +233,7 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
         dbm.addMeal();
         String tmp;
         for (Food f: dbm.getFoodDatabase() ) {
-            tmp = f.getCategorye();
+            tmp = f.getCategory();
         }
     }
 
