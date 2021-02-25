@@ -63,7 +63,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         }
         else {
             holder.tv_item.setText(foodList.get(position).getName());
-           if(foodList.get(position).getCalories() == highestIngredientCalorie)
+           if(foodList.get(position).getCalories() >= highestIngredientCalorie)
                holder.imageView.setImageResource(R.drawable.target);
            else
                holder.imageView.setImageResource(R.drawable.like);
@@ -121,6 +121,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             else {
                 tv_item = itemView.findViewById(R.id.tv_Item_Name);
                 imageView = itemView.findViewById(R.id.image_meal);
+                tv_item.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(typeOfInflate != 2)
+                         onItemClick.onItemClick(foodList.get(getAbsoluteAdapterPosition()));
+                    }
+                });
             }
         }
     }
@@ -133,6 +140,9 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         void onItemClick (Food food);
     }
 
+    public List<Food> getFoodList() {
+        return foodList;
+    }
 
 }
 

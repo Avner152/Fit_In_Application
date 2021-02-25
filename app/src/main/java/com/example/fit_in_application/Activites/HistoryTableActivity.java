@@ -12,12 +12,11 @@ import com.example.fit_in_application.Classes.Fragment_map;
 import com.example.fit_in_application.Classes.Meal;
 import com.example.fit_in_application.Classes.MealAdapter;
 import com.example.fit_in_application.Classes.MealEntity;
-import com.example.fit_in_application.Fragments.FragmentTable;
 import com.example.fit_in_application.R;
 
 import java.util.List;
 
-public class HistoryTableActivity extends AppCompatActivity implements FragmentTable.CallBack_list {
+public class HistoryTableActivity extends AppCompatActivity {
 
     private Fragment_map fragment_map;
     private List<Meal> mealSet;
@@ -48,7 +47,7 @@ public class HistoryTableActivity extends AppCompatActivity implements FragmentT
         linearLayoutManager = new LinearLayoutManager(this);
 
         mealAdapter = new MealAdapter(mealSet);
-        mealAdapter.setTypeOfInflate(1);
+        mealAdapter.setTypeOfInflate(2);
 
         history_RCV_meal.setLayoutManager(linearLayoutManager);
         history_RCV_meal.setHasFixedSize(true);
@@ -89,10 +88,5 @@ public class HistoryTableActivity extends AppCompatActivity implements FragmentT
     protected void onDestroy() {
         super.onDestroy();
         finish();
-    }
-
-    @Override
-    public void onScoreSampleListener(double d1, double d2) {
-
     }
 }

@@ -14,6 +14,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
+// Gilad Leshem 305357402
+// Avner Levy 308063395
+
 public class MainActivity extends AppCompatActivity {
 
     private Button main_BTN_LogIn, main_BTN_About, main_BTN_Contact, main_BTN_Start;

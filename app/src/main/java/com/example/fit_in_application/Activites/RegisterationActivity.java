@@ -30,15 +30,13 @@ public class RegisterationActivity extends AppCompatActivity {
     private Button registerBtn, logInBtn, backBtn;
 
     //Firebase//
-    FirebaseAuth firebaseAuth;
-    private FirebaseUser firebaseUser;
-    DatabaseReference reference;
+     FirebaseAuth firebaseAuth;
+     DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         cutOutDealer();
-
         setContentView(R.layout.activity_registeration);
         findViews();
 
@@ -53,6 +51,7 @@ public class RegisterationActivity extends AppCompatActivity {
     }
 
     private void register(String username, String email, String password) {
+        firebaseAuth = FirebaseAuth.getInstance();
 
         firebaseAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -60,8 +59,7 @@ public class RegisterationActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-
-                        String userid = firebaseUser.getUid().toString();
+                        String userid = firebaseUser.getUid();
                         reference = FirebaseDatabase.getInstance().getReference("My_Users").child(userid);
 
 
@@ -82,9 +80,13 @@ public class RegisterationActivity extends AppCompatActivity {
                             }
                         });
                     }
-                    else
-                        Toast.makeText(RegisterationActivity.this, "Invalid Email or Password", Toast.LENGTH_SHORT).show();
-                }
+                        else{
+                        Intent intent = new Intent(RegisterationActivity.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
+                    }
+                    }
             });
 
     }

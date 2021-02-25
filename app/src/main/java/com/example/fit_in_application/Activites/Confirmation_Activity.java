@@ -41,13 +41,13 @@ public class Confirmation_Activity extends AppCompatActivity {
     public static final String MAP_KEY = "meals";
 
     // Preemptive variables:
-    private int threshold, highestCalorieIndex;
+    private int threshold, highestCalorieIndex = -1;
     private double totalCalorieValue;
 
     // Objects:
     private FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseManager databaseManager;
-    private FoodAdapter foodAdapter;
+    private FoodAdapter foodAdapter, foodAdapter2;
     private Meal chosenMeal;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private String WantedCategory;
@@ -58,9 +58,9 @@ public class Confirmation_Activity extends AppCompatActivity {
 
     // UI Attributes:
     private Button  confirm_BTN_next;
-    private ImageView mealImage, confirm_meal_image;
+    private ImageView confirm_meal_image;
     private RecyclerView choice_confirmation_RCV, change_confirmation_RCV;
-    private TextView confirm_txtMeal, confirm_txtDate, confirm_txtIngredient, confirm_txtCalories;
+    private TextView confirm_txtMeal, confirm_txtIngredient, confirm_txtCalories, mealTypeTxt;
 
 
     @Override
@@ -72,18 +72,45 @@ public class Confirmation_Activity extends AppCompatActivity {
         initFunction();
         setCardView();
 
-        offerChangeIngredients(chosenMeal, databaseManager.getFoodDatabase());
-        setUpRecycler();
+        if(highestCalorieIndex > -1) {
+            setUpRecyclerForFoodList();
+            setUpRecyclerForMealList();
+            offerChangeIngredients(chosenMeal, databaseManager.getFoodDatabase());
 
+            foodAdapter.setOnItemClick(new FoodAdapter.OnItemClick() {
+                @Override
+                public void onItemClick(Food food) {
+                    double cur = chosenMeal.getCalories()
+                            - chosenMeal.getFoodIngredients().get(highestCalorieIndex).getCalories()
+                            + food.getCalories();
+                            chosenMeal.setCalories(cur);
+                    confirm_txtCalories.setText("Calories: " + cur);
+                    foodAdapter2.getFoodList().set(highestCalorieIndex, food);
+                    foodAdapter2.notifyDataSetChanged();
+                }
+            });
+        }
+    }
+
+    private void setUpRecyclerForMealList() {
+        // Meal to Change Recycler View:
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(this);
+        foodAdapter2 = new FoodAdapter(chosenMeal.getFoodIngredients());
+
+        foodAdapter2.setTypeOfInflate(2);
+        foodAdapter2.setHighestIngredientCalorie(chosenMeal.getFoodIngredients().get(highestCalorieIndex).getCalories());
+
+        change_confirmation_RCV.setLayoutManager(linearLayoutManager2);
+        change_confirmation_RCV.setHasFixedSize(true);
+        change_confirmation_RCV.setAdapter(foodAdapter2);
     }
 
     private void findViews() {
         // init ImageView
-        mealImage = findViewById(R.id.image_meal);
+        mealTypeTxt = findViewById(R.id.confirm_type_txt);
         confirm_txtMeal = findViewById(R.id.confirm_txtMeal);
         confirm_txtCalories = findViewById(R.id.confirm_txtCalories);
         confirm_txtIngredient = findViewById(R.id.confirm_txtIngredients);
-        confirm_txtDate = findViewById(R.id.txtAddedDate);
         confirm_meal_image = findViewById(R.id.confirm_meal_image);
         confirm_BTN_next = findViewById(R.id.confirm_BTN_next);
 
@@ -109,17 +136,13 @@ public class Confirmation_Activity extends AppCompatActivity {
             chosenMeal.setFoodIngredients(getFoodFromString(chosenMeal.getIngredients()));
             ; // List of Food
         }
-        Log.d("TAG", "initFunction: " + chosenMeal.getIngredients());
-        Log.d("TAG", "initFunction: " + chosenMeal.getFoodIngredients().toString());
 
         if(mealEntity == null)
             mealEntity = new MealEntity();
 
         // INIT VARIABLES:
         totalCalorieValue = chosenMeal.getCalories();
-        Log.d("TAG", "initFunction: " + totalCalorieValue);
         highestCalorieIndex = findHighestCalorie(chosenMeal.getFoodIngredients());
-
         // Init Docs:
         DocumentReference docRef = db.collection("meals").document(firebaseUser.getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -168,13 +191,19 @@ public class Confirmation_Activity extends AppCompatActivity {
 
     private void setCardView() {
         // Set Card view:
-        if(threshold == BREAKFAST_THRESHOLD)
+        if(threshold == BREAKFAST_THRESHOLD) {
             confirm_meal_image.setImageResource(R.drawable.breakfast);
-        else if(threshold == LUNCH_THRESHOLD)
+            mealTypeTxt.setText("-Breakfast Time!-");
+        }
+            else if(threshold == LUNCH_THRESHOLD) {
             confirm_meal_image.setImageResource(R.drawable.lunch);
-        else
-            confirm_meal_image.setImageResource(R.drawable.dinner);
+            mealTypeTxt.setText("-Lunch Break!-");
+        }
 
+        else {
+            confirm_meal_image.setImageResource(R.drawable.dinner);
+            mealTypeTxt.setText("-Dinner Special!-");
+        }
         confirm_txtMeal.setText(chosenMeal.getMealName());
         for (int i = 0; i < chosenMeal.getIngredients().size() ; i++) {
             confirm_txtIngredient.setText(confirm_txtIngredient.getText() + chosenMeal.getIngredients().get(i) + " | ");
@@ -182,13 +211,11 @@ public class Confirmation_Activity extends AppCompatActivity {
         confirm_txtCalories.setText(confirm_txtCalories.getText() + "" + totalCalorieValue);
     }
 
-    private void setUpRecycler() {
+    private void setUpRecyclerForFoodList() {
         // Decision Recycler View:
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         foodAdapter = new FoodAdapter(recommendedFood, threshold);
-
         double calorieAfterSubstract = totalCalorieValue - chosenMeal.getFoodIngredients().get(highestCalorieIndex).getCalories();
-
         foodAdapter.setChosenMealCal(calorieAfterSubstract);
 
         foodAdapter.setTypeOfInflate(1);
@@ -196,18 +223,6 @@ public class Confirmation_Activity extends AppCompatActivity {
         choice_confirmation_RCV.setLayoutManager(linearLayoutManager);
         choice_confirmation_RCV.setHasFixedSize(true);
         choice_confirmation_RCV.setAdapter(foodAdapter);
-
-
-        // Meal to Change Recycler View:
-        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(this);
-        foodAdapter = new FoodAdapter(chosenMeal.getFoodIngredients());
-
-        foodAdapter.setTypeOfInflate(2);
-        foodAdapter.setHighestIngredientCalorie(chosenMeal.getFoodIngredients().get(highestCalorieIndex).getCalories());
-
-        change_confirmation_RCV.setLayoutManager(linearLayoutManager2);
-        change_confirmation_RCV.setHasFixedSize(true);
-        change_confirmation_RCV.setAdapter(foodAdapter);
     }
 
     private void offerChangeIngredients(Meal chosenMeal, List<Food> foodList) {
@@ -215,7 +230,6 @@ public class Confirmation_Activity extends AppCompatActivity {
 
         if(highestCalorieIndex == -1){
             Toast.makeText(this, "No Ingredient found in your meal", Toast.LENGTH_SHORT).show();
-            // not found ..
         }
         else
         {

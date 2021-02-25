@@ -16,17 +16,18 @@ import java.util.List;
 public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder> {
 
     public static final int INFLATE_FOR_SELECTION = 0;
-    public static final int INFLATE_FOR_HISTORY = 1;
+    public static final int INFLATE_FOR_CHOSE = 1;
+    public static final int INFLATE_FOR_HISTORY = 2;
 
     private OnItemClickListener onItemClickListener;
     private List<Meal> mealList;
-    private FoodAdapter.OnItemClick onItemClick;
     private int typeOfInflate;
 
 
     public MealAdapter(List<Meal> mealList) {
         this.mealList = mealList;
     }
+
 
     @NonNull
     @Override
@@ -41,7 +42,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MealViewHolder holder, int position) {
-        if(typeOfInflate == 0)
+        if(typeOfInflate == INFLATE_FOR_SELECTION)
             holder.mealBtn.setText(mealList.get(position).getMealName());
         else
         {
@@ -70,7 +71,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
 
         public MealViewHolder(@NonNull View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
-            if (typeOfInflate == 0) {
+            if (typeOfInflate == INFLATE_FOR_SELECTION) {
                 mealBtn = itemView.findViewById(R.id.btn_Item_Name);
                 mealBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -89,10 +90,20 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
                     }
                 });
             }
-            else{
+
+            else {
                 tvMeal = itemView.findViewById(R.id.meal_name_history);
                 tvIndeg = itemView.findViewById(R.id.meal_Ingredients_history);
                 tvCalorie = itemView.findViewById(R.id.meal_Calorie_history);
+                if (typeOfInflate == INFLATE_FOR_CHOSE){
+                    itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            int pos = getAbsoluteAdapterPosition();
+
+                        }
+                    });
+                }
             }
         }
 

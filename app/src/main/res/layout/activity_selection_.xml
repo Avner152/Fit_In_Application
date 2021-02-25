@@ -8,6 +8,90 @@
     android:background="@drawable/gradient_registeration"
     tools:context=".Activites.Selection_Activity">
 
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/tg_selec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:singleSelection="true"
+       >
+        <Button
+            android:id="@+id/breakfast_BTN_selection"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Breakfast"
+            android:layout_weight="0.85"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:fontFamily="@font/climousinesbold"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/Avners"
+            android:textColor="@color/AvnerLight"
+            android:textSize="22dp"
+            />
+
+        <Button
+            android:id="@+id/lunch_BTN_selection"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="Lunch"
+            android:fontFamily="@font/climousinesbold"
+            android:backgroundTint="@color/Avners"
+            android:textAllCaps="false"
+            android:textColor="@color/AvnerLight"
+            android:textSize="22dp"
+            />
+
+        <Button
+            android:id="@+id/dinner_BTN_selection"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="Dinner"
+            android:fontFamily="@font/climousinesbold"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/Avners"
+            android:textColor="@color/AvnerLight"
+            android:textSize="22dp"
+             />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/tgSwitch_selec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tg_selec"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        app:checkedButton="@+id/ready_Btn"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/ready_Btn"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/Avners"
+            android:textAllCaps="false"
+            android:text="Ready Meal"
+            android:textSize="25dp"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/diy_Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/Avners"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+            android:textAllCaps="false"
+            android:textSize="25dp"
+            android:text="Go Manual"
+                />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
     <Button
         android:id="@+id/selec_BTN_next"
         android:layout_width="wrap_content"
@@ -20,8 +104,14 @@
         android:layout_marginBottom="15dp"
         android:fontFamily="@font/climousines"
         android:text="Next >"
+        android:textSize="20dp"
+        android:shadowColor="@color/Avners"
+        android:shadowRadius="3"
+        android:shadowDx="3"
+        android:shadowDy="2"
         android:textAllCaps="false"
-        android:textColor="@color/black" />
+        android:backgroundTint="@color/AvnerLight"
+        android:textColor="@color/Avners"  />
 
     <Button
         android:id="@+id/selec_BTN_prev"
@@ -33,10 +123,16 @@
         android:layout_marginLeft="36dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="15dp"
+        android:shadowColor="@color/Avners"
+        android:shadowRadius="3"
+        android:shadowDx="3"
+        android:shadowDy="2"
         android:fontFamily="@font/climousines"
         android:text="Previous"
+        android:textSize="20dp"
         android:textAllCaps="false"
-        android:textColor="@color/black" />
+        android:backgroundTint="@color/AvnerLight"
+        android:textColor="@color/Avners" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/selec_RCV_food"
@@ -45,7 +141,7 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/diy_switch"
+        android:layout_below="@+id/tgSwitch_selec"
         android:layout_above="@id/selection_meal_CV"
         android:alpha="0.55"
         android:background="@color/white"
@@ -58,123 +154,64 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/diy_switch"
+        android:layout_below="@+id/tgSwitch_selec"
         android:layout_above="@id/selection_meal_CV"
         android:alpha="0.55"
         android:background="@color/white"
         android:padding="15dp"
   />
 
-    <RadioGroup
-        android:id="@+id/sekec_RDG_meal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="25dp"
-        android:layout_centerHorizontal="true"
-  >
-
-        <RadioButton
-            android:id="@+id/selec_rb_breakfast"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/cream_cake"
-            android:text="Breakfast"
-            android:textSize="28sp" />
-
-        <RadioButton
-            android:id="@+id/selec_rb_lunch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:fontFamily="@font/cream_cake"
-            android:text="Lanch"
-            android:textSize="28sp" />
-
-        <RadioButton
-            android:id="@+id/selec_rb_dinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/cream_cake"
-            android:scrollbarSize="2dp"
-            android:text="Dinner"
-            android:textSize="28sp" />
-    </RadioGroup>
-
-    <Switch
-        android:id="@+id/diy_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sekec_RDG_meal"
-        android:layout_centerInParent="true"
-        android:textSize="30dp"
-        android:text="DIY?"         />
-
     <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/selection_meal_CV"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="6dp"
+        android:layout_height="wrap_content"
         android:layout_above="@id/selec_BTN_prev"
-        android:background="@color/cardview_dark_background"
-        >
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="8dp"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/meal"
 
-                />
+            >
+
+
             <TextView
                 android:id="@+id/txtMeal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/climousinesbold"
                 android:padding="1dp"
                 android:text="Meal: "
-                android:textColor="@color/black"
-                android:fontFamily="@font/climousinesbold"
-                android:textSize="15sp"
-                />
+                android:textColor="@color/Avners"
+                android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/txtIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/climousinesbold"
                 android:padding="1dp"
                 android:text="Ingredients: "
-                android:textColor="@color/black"
-                android:fontFamily="@font/climousinesbold"
-                android:textSize="15sp"
-                />
+                android:textColor="@color/Avners"
+                android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/txtCalories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/climousinesbold"
                 android:padding="1dp"
                 android:text="Calories"
-                android:textColor="@color/black"
-                android:fontFamily="@font/climousinesbold"
-                android:textSize="15sp"
-                />
+                android:textColor="@color/Avners"
+                android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/txtAddedDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="added Date: "
-                android:padding="1dp"
-                android:fontFamily="@font/climousinesbold"
-                android:textSize="15sp"
-                android:textColor="@color/black" />
 
         </LinearLayout>
 

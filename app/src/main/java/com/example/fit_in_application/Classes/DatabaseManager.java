@@ -16,34 +16,37 @@ public class DatabaseManager implements Serializable {
 
     public void addMeal(){
 
-        mealDatabase.add(new Meal("Hamburger", Arrays.asList("Regular Bun Medium", "Beef Patty", "Pickles", "Onion"), 721.9));
+        mealDatabase.add(new Meal("Hamburger", Arrays.asList("Regular Bun Medium", "Beef Patty Ex.", "Pickles", "Onion"), 755.4));
         mealDatabase.add(new Meal("Pizza", Arrays.asList("Dough XL", "Tomato sauce", "Mozzarella Cheese", "Mushrooms", "black olives"), 561.4));
-        mealDatabase.add(new Meal("Caesar salad", Arrays.asList("Cucumber", "Parmesan Cheese", "Eggs", "Croutons"), 481));
-        mealDatabase.add(new Meal("Beef Shawarma", Arrays.asList("Beef Patty Extra", "Pita Bread", "Tahini", "Tomato", "Cucumber", "Onion"), 1078.24));
-        mealDatabase.add(new Meal("Eggnog Pancakes", Arrays.asList("Eggnog", "Butter", "Cinnamon", "Syrup"), 357.72));
-        mealDatabase.add(new Meal("Baked Ravioli", Arrays.asList("Ricotta Cheese", "Ravioli", "Parmesan Cheese", "Mozzarella Cheese"), 412.24));
-        mealDatabase.add(new Meal("KFC", Arrays.asList("Chicken Wings", "Ketchup"), 867.92));
+        mealDatabase.add(new Meal("Caesar salad", Arrays.asList("Cucumber","Tomato","Peppers","Carrot","Bulgur", "Parmesan Cheese Ex.", "Egg", "Croutons"), 427));
+        mealDatabase.add(new Meal("Beef Shawarma", Arrays.asList("Indian shawarma","Veal shawarma","French Fries", "Pita Bread", "Tahini", "Tomato", "Cucumber", "Onion","Ketchup"), 899));
+        mealDatabase.add(new Meal("Eggnog Pancakes", Arrays.asList("Eggnog","Milk","Mix Vegetables", "Butter", "Cinnamon", "Syrup"), 337f));
+        mealDatabase.add(new Meal("Baked Ravioli", Arrays.asList("Ricotta Cheese", "Ravioli", "Parmesan Cheese Ex.", "Mozzarella Cheese","Mix Vegetables","Sweet Potato","Butter"), 467.61));
+        mealDatabase.add(new Meal("KFC", Arrays.asList("Chicken Wings","Chicken Leg","Rice","Ketchup","French Fries","Baked Potato"), 850f));
 
     }
 
     public void addFood(){
         // Diary
+
+
         foodDatabase.add(new Food("Dairy", "", 0));
-        foodDatabase.add(new Food("Dairy", "Curd", 7.88f));
+        foodDatabase.add(new Food("Dairy", "Curd", 7f));
         foodDatabase.add(new Food("Dairy", "Fried Egg ", 14f));
-        foodDatabase.add(new Food("Dairy", "Sweet Omlette ", 17.79f));
-        foodDatabase.add(new Food("Dairy", "Scrambled Egg", 6.5f));
+        foodDatabase.add(new Food("Dairy", "Sweet Omelet ", 17f));
+        foodDatabase.add(new Food("Dairy", "Scrambled Egg", 6f));
         foodDatabase.add(new Food("Dairy", "Egg", 78f));
         foodDatabase.add(new Food("Dairy", "Mozzarella Cheese", 28f));
-        foodDatabase.add(new Food("Dairy", "Parmesan Cheese", 43f));
-        foodDatabase.add(new Food("Dairy", "Ricotta Cheese", 17.21f));
+        foodDatabase.add(new Food("Dairy", "Parmesan Cheese Ex.", 129f));
+        foodDatabase.add(new Food("Dairy", "Ricotta Cheese", 17f));
         foodDatabase.add(new Food("Dairy","Tahini",44f));
         foodDatabase.add(new Food("Dairy","Cinnamon",11f));
         foodDatabase.add(new Food("Dairy","Syrup",43f));
         foodDatabase.add(new Food("Dairy","Ketchup",32f));
         foodDatabase.add(new Food("Dairy","Tomato sauce",31f));
         foodDatabase.add(new Food("Dairy","Eggnog",68f));
-
+        foodDatabase.add(new Food("Dairy","Butter",81f));
+        foodDatabase.add(new Food("Dairy","Milk",80f));
 
         // Vegetables
         foodDatabase.add(new Food("Vegetables"," ",0));
@@ -100,9 +103,9 @@ public class DatabaseManager implements Serializable {
         foodDatabase.add(new Food("Cereals","Wild rice",101f));
         foodDatabase.add(new Food("Cereals","Baked Potato ",93f));
         foodDatabase.add(new Food("Cereals","Baked Corn",108f));
-        foodDatabase.add(new Food("Cereals","Ravioli",77.4f));
+        foodDatabase.add(new Food("Cereals","Ravioli",77f));
         foodDatabase.add(new Food("Cereals","Croutons",22f));
-
+        foodDatabase.add(new Food("Cereals","French Fries",220f));
 
         //Meat
         foodDatabase.add(new Food("Meat","",0));
@@ -114,7 +117,7 @@ public class DatabaseManager implements Serializable {
         foodDatabase.add(new Food("Meat","Chicken Breast",165f));
         foodDatabase.add(new Food("Meat","Chicken Wings",202f));
         foodDatabase.add(new Food("Meat","Beef Patty",395f));
-        foodDatabase.add(new Food("Meat","Beef Patty Extra",611.4f));
+        foodDatabase.add(new Food("Meat","Beef Patty Ex.",611f));
 
     }
 

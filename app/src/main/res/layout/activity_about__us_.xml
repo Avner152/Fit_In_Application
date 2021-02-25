@@ -9,19 +9,30 @@
     android:background="@drawable/gradient_registeration"
     tools:context=".Activites.About_Us_Activity">
 
+    <TextView
+        android:id="@+id/about_us_Header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About Fit-In"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:textSize="75dp"
+        />
 
     <TextView
         android:id="@+id/about_TXT_us"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/about_us_Header"
         android:layout_marginStart="23dp"
         android:layout_marginTop="23dp"
         android:layout_marginEnd="23dp"
         android:layout_marginBottom="23dp"
-
+        android:layout_above="@id/about_BTN_back"
         android:text=""
         android:textColor="@color/colorBackground"
-        android:textSize="40sp"
+        android:textSize="35dp"
         android:textStyle="italic" />
 
     <Button
@@ -29,13 +40,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-55dp"
         android:layout_marginBottom="98dp"
-        android:background="@drawable/gradient_registeration"
+
         android:fontFamily="@font/climousinesbold"
         android:text="Back"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:backgroundTint="@color/Avners"
+        android:textColor="@color/AvnerLight"
+        android:shadowColor="@color/white"
+        android:shadowRadius="0.1"
+        android:shadowDx="2"
+        android:shadowDy="1"
         android:textSize="25dp"
         android:textStyle="bold" />
 
@@ -45,13 +60,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginRight="-4dp"
+        android:backgroundTint="@color/Avners"
+        android:textColor="@color/AvnerLight"
+        android:shadowColor="@color/white"
+        android:shadowRadius="0.1"
+        android:shadowDx="2"
+        android:shadowDy="1"
+        android:textSize="25dp"
         android:layout_marginBottom="96dp"
         android:fontFamily="@font/climousinesbold"
         android:text="Skip"
         android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="25dp"
         android:textStyle="bold" />
+
+
 </RelativeLayout>

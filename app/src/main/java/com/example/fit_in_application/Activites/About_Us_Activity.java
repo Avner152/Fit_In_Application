@@ -67,6 +67,8 @@ public class About_Us_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 tv.setText(CONTACT_US);
                 stopDelay();
+                if(mp != null)
+                    mp.stop();
             }
         });
         Log.d("About us", "ViewButtons");
@@ -102,8 +104,11 @@ public class About_Us_Activity extends AppCompatActivity {
             handler.postDelayed(r, 60);
             if (!mp.isPlaying())
                 mp.start();
-        } else if (curChar == CONTACT_US.length() - 1)
+        } else if (curChar == CONTACT_US.length() - 1) {
             stopDelay();
+            mp.stop();
+        }
+
         tv.setText(newStr);
     }
 
@@ -120,8 +125,8 @@ public class About_Us_Activity extends AppCompatActivity {
     private String strId() {
         return "Hello, Everyone!!\n" +
                 "In Fit-In, we strive to keep you fit & healthy " +
-                "At cure.fit, we strive to keep you fit & healthy through a range of holistic offerings" +
-                "that include fitness and yoga, healthy meals, mental wellbeing and primary care.\n" +
+                "At cure.fit, we strive to keep you fit & healthy through a range of holistic offerings\n" +
+                "that include fitness and yoga, healthy meals, mental well being and primary care.\n" +
                 "Now anyone can now stay healthy from the safety of their homes with just a single app" +
                 "that helps you to #BeBetterEveryDay";
     }

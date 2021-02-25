@@ -8,66 +8,75 @@
     android:background="@drawable/gradient_registeration"
     tools:context=".Activites.Confirmation_Activity">
 
+    <TextView
+        android:id="@+id/confirm_type_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/dreams"
+        android:textColor="@color/Avners"
+        android:shadowColor="@color/white"
+        android:shadowRadius="0.2"
+        android:shadowDx="0.5"
+        android:shadowDy="0.6"
+        android:text="dummy"
+        android:textSize="60dp"
+       />
 
-        <LinearLayout
+    <RelativeLayout
             android:id="@+id/confirmation_foodList_cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="8dp"
+            android:layout_below="@id/confirm_type_txt"
             android:layout_marginLeft="15dp"
             android:orientation="vertical"
             >
 
             <ImageView
                 android:id="@+id/confirm_meal_image"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/meal"
-
-                />
+                android:layout_marginRight="10dp"
+                 />
             <TextView
                 android:id="@+id/confirm_txtMeal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="1dp"
                 android:text="Meal: "
+                android:layout_toRightOf="@id/confirm_meal_image"
                 android:textColor="@color/black"
                 android:fontFamily="@font/climousinesbold"
                 android:textSize="18sp"
-                />
+                tools:ignore="MissingConstraints" />
             <TextView
                 android:id="@+id/confirm_txtIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="1dp"
+                android:layout_below="@id/confirm_txtMeal"
                 android:text="Ingredients: "
+                android:layout_toRightOf="@id/confirm_meal_image"
                 android:textColor="@color/black"
                 android:fontFamily="@font/climousinesbold"
                 android:textSize="18sp"
-                />
+             />
             <TextView
                 android:id="@+id/confirm_txtCalories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="1dp"
+                android:layout_toRightOf="@id/confirm_meal_image"
+                android:layout_below="@id/confirm_txtIngredients"
                 android:text="Calories: "
                 android:textColor="@color/black"
                 android:fontFamily="@font/climousinesbold"
                 android:textSize="18sp"
-                />
+                tools:ignore="MissingConstraints" />
 
-            <TextView
-                android:id="@+id/confirm_txtAddedDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="added Date: "
-                android:padding="1dp"
-                android:fontFamily="@font/climousinesbold"
-                android:textSize="15sp"
-                android:textColor="@color/black" />
-
-        </LinearLayout>
+        </RelativeLayout>
 
     <TextView
         android:id="@+id/decision_text"
@@ -98,17 +107,20 @@
         android:orientation="horizontal"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
+
         android:layout_above="@id/confirm_BTN_next"
         android:layout_below="@id/decision_text"
         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/change_confirmation_RCV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_alignParentLeft="true"
+        android:layout_marginRight="15dp"
         android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@id/choice_confirmation_RCV"
         android:layout_above="@id/confirm_BTN_next"
         android:layout_below="@id/decision_text"
 
@@ -130,4 +142,5 @@
         android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
         />
+
 </RelativeLayout>

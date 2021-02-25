@@ -23,7 +23,9 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/Avners"
         android:hint="Name"
-        android:inputType="textPersonName" />
+        android:textSize="19dp"
+        android:inputType="textPersonName"
+        />
 
     <EditText
         android:layout_width="fill_parent"
@@ -32,6 +34,7 @@
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/Avners"
         android:hint="Email"
+        android:textSize="19dp"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -39,6 +42,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/Avners"
         android:hint="Phone"
+        android:textSize="19dp"
         android:inputType="phone" />
 
     <EditText
@@ -53,6 +57,7 @@
         android:breakStrategy="balanced"
         android:inputType="textMultiLine"
         android:singleLine="false"
+        android:textSize="19dp"
         android:padding="5dp" />
 
     <Button

@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,16 +21,17 @@ import com.example.fit_in_application.Classes.FoodAdapter;
 import com.example.fit_in_application.Classes.Meal;
 import com.example.fit_in_application.Classes.MealAdapter;
 import com.example.fit_in_application.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
-    public static final int BREAKFAST_THRESHOLD = 300;
-    public static final int LUNCH_THRESHOLD = 600;
-    public static final int DINNER_THRESHOLD = 400;
+    public static final int BREAKFAST_THRESHOLD = 400;
+    public static final int LUNCH_THRESHOLD = 750;
+    public static final int DINNER_THRESHOLD = 500;
 
     private int capturedThresh;
     private String chosenMealName = "";
@@ -43,8 +42,10 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
     private FoodAdapter foodAdapter;
     private MealAdapter mealAdapter;
     private DatabaseManager dbm;
-    private RadioButton rbBreakfast, rbLunch, rbDinner;
-    private Button nextBtn, prevBtn;
+
+    private MaterialButtonToggleGroup toggleGroup, selectToggleGroup;
+    private Button nextBtn, prevBtn, breakfastBtn, lunchBtn, dinnerBtn;
+    private MaterialButton manualBtn, diyButton;
     private Switch diySwitch;
     private Meal chosenMeal;
     private List<String> chosenFoodInList;
@@ -95,7 +96,7 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
                 else {
                     chosenMeal.setMealName(chosenMealName);
                     Log.d("TAGs", "onClick: Substructed Calories: " + currentCalories);
-                    chosenMeal.setCalories(currentCalories);
+                    chosenMeal.setCalories((int) currentCalories);
                     chosenMeal.setIngredients(chosenFoodInList);
                     chosenMeal.setMealName(mealName_tv.getText().toString());
 
@@ -110,50 +111,48 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
         });
 
         // Radio Buttons
-    rbBreakfast.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            capturedThresh = BREAKFAST_THRESHOLD;
-        }
-    });
 
-        rbLunch.setOnClickListener(new View.OnClickListener() {
+        breakfastBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                capturedThresh = BREAKFAST_THRESHOLD;
+                Toast.makeText(Selection_Activity.this, capturedThresh + "", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        lunchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 capturedThresh = LUNCH_THRESHOLD;
+                Toast.makeText(Selection_Activity.this, capturedThresh + "", Toast.LENGTH_SHORT).show();
             }
         });
-
-        rbDinner.setOnClickListener(new View.OnClickListener() {
+        dinnerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 capturedThresh = DINNER_THRESHOLD;
+                Toast.makeText(Selection_Activity.this, capturedThresh + "", Toast.LENGTH_SHORT).show();
+
             }
         });
 
-        // Switch
-        diySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        diyButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                currentCalories = 0;
-                if(chosenFoodInList != null)
-                    chosenFoodInList.clear();
-
+            public void onClick(View v) {
+                selec_RCV_food.setVisibility(View.VISIBLE);
+                selec_RCV_meal.setVisibility(View.GONE);
                 initText();
-                if(isChecked) {
-                    selec_RCV_food.setVisibility(View.VISIBLE);
-                    selec_RCV_meal.setVisibility(View.GONE);
-                }
-                    else {
-                    selec_RCV_food.setVisibility(View.GONE);
-                    selec_RCV_meal.setVisibility(View.VISIBLE);
-                }
-            }
 
-            private void initText() {
-                mealName_tv.setText("Meal: ");
-                ingredients_tv.setText("Ingredients: ");
-                calories_tv.setText("Calories: ");
+            }
+        });
+
+        manualBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selec_RCV_food.setVisibility(View.GONE);
+                selec_RCV_meal.setVisibility(View.VISIBLE);
+                initText();
             }
         });
 
@@ -172,7 +171,6 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
                     chosenFoodInList.clear();
                 chosenMealName = meal.getMealName();
                 mealName_tv.setText(chosenMealName);
-                date_tv.setText(new Date().toString());
                 String ingred = "";
                 for (int i = 0; i < meal.getIngredients().size(); i++) {
                     ingred += (meal.getIngredients().get(i) + " | ");
@@ -191,7 +189,6 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
             public void onItemClick(Food food) {
                 chosenMealName = "Do it Yourself";
                 mealName_tv.setText(chosenMealName);
-                date_tv.setText(new Date().toString());
                 if(food.getCalories() > 0)
                     ingredients_tv.setText(ingredients_tv.getText() + food.getName() + " | ");
                 currentCalories += food.getCalories();
@@ -204,7 +201,15 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
 
     }
 
+    private void initText() {
+        currentCalories = 0;
+        if(chosenFoodInList != null)
+            chosenFoodInList.clear();
 
+        mealName_tv.setText("Meal: ");
+        ingredients_tv.setText("Ingredients: ");
+        calories_tv.setText("Calories: ");
+    }
     private void setupRecyclerView() {
         // Food //
         selec_RCV_food = findViewById(R.id.selec_RCV_food);
@@ -238,18 +243,24 @@ public class Selection_Activity<chosenFoodInList> extends AppCompatActivity {
     }
 
     private void findViews() {
+
+    toggleGroup = findViewById(R.id.tg_selec);
+    selectToggleGroup = findViewById(R.id.tgSwitch_selec);
+
+     manualBtn = findViewById(R.id.ready_Btn);
+     diyButton = findViewById(R.id.diy_Btn);
+
+    breakfastBtn = findViewById(R.id.breakfast_BTN_selection);
+    lunchBtn = findViewById(R.id.lunch_BTN_selection);
+    dinnerBtn = findViewById(R.id.dinner_BTN_selection);
     nextBtn = findViewById(R.id.selec_BTN_next);
     prevBtn = findViewById(R.id.selec_BTN_prev);
     selec_RCV_food = findViewById(R.id.selec_RCV_food);
     selec_RCV_meal = findViewById(R.id.selec_RCV_meal);
-    rbBreakfast = findViewById(R.id.selec_rb_breakfast);
-    rbLunch =  findViewById(R.id.selec_rb_lunch);
-    rbDinner = findViewById(R.id.selec_rb_dinner);
-    diySwitch = findViewById(R.id.diy_switch);
     mealName_tv = findViewById(R.id.txtMeal);
-    date_tv = findViewById(R.id.txtAddedDate);
     ingredients_tv = findViewById(R.id.txtIngredients);
     calories_tv = findViewById(R.id.txtCalories);
+      //  diySwitchdiySwitch = findViewById(R.id.diy_switch);
     }
 
     @Override

@@ -8,6 +8,12 @@ public class Food implements Serializable {
     private String name;
     private String category;
 
+    // copy constructor
+    public Food(Food food){
+        setName(food.getName());
+        setCategory(food.getCategory());
+        setCalories(food.getCalories());
+    }
     public Food()
     {
         name = "Null Name";
@@ -23,7 +29,6 @@ public class Food implements Serializable {
     public double getCalories(){
         return this.calories;
     }
-
     public String getName(){
         return this.name;
     }
